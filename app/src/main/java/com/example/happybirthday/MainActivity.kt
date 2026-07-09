@@ -24,8 +24,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 
-
+// Activité principale de l'application
 class MainActivity : ComponentActivity() {
+    // Méthode appelée au lancement de l'application
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -47,19 +48,17 @@ class MainActivity : ComponentActivity() {
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center,
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.padding(8.dp)
     ) {
         Text(
             text = message,
             fontSize = 100.sp,
             lineHeight = 116.sp,
             textAlign = TextAlign.Center,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         Text(
             text = from,
             fontSize = 36.sp,
-            textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(16.dp)
                 .align(alignment = Alignment.End)
@@ -68,14 +67,15 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
+// Fonction qui affiche l'image de fond avec le texte par-dessus
 fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
     val image = painterResource(id = R.drawable.androidparty)
-    Box(modifier = modifier.fillMaxSize()) {
+    Box{
         Image(
             painter = image,
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
+            alpha = 0.5F
         )
         GreetingText(
             message = message,
@@ -86,11 +86,11 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
         )
     }
 }
-
+// Aperçu de l'application dans Android Studio
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun BirthdayCardPreview() {
-
+    // Affiche un exemple de carte d'anniversaire
     HappyBirthdayTheme  {
         GreetingImage("Happy Birthday Sam!", "From Emma")
     }
