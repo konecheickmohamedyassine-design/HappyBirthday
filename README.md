@@ -1,4 +1,4 @@
-# Happy Birthday App 🎉
+# Happy Birthday App 
 
 ## Description
 
